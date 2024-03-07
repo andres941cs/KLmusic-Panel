@@ -1,0 +1,127 @@
+section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: #222;
+    /* margin: 0;
+    padding: 0;
+    box-sizing: border-box; */
+}
+@property --a
+{
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 0deg;
+}
+.box{
+    position: relative;
+    width: 400px;
+    min-height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: repeating-conic-gradient(from var(--a),#01dbc2 0%,#01dbc2 10%,transparent 10%,transparent 50%);
+    animation: animate 6s linear infinite ;
+}
+.box::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: repeating-conic-gradient(from var(--a),#01dbc2 0%,#01dbc2 10%,transparent 10%,transparent 50%);
+    animation: animate 6s linear infinite;
+    animation-delay: -1.5s;
+}
+.box::after{
+    content: '';
+    position: absolute;
+    inset: 2px;
+    border: 20px solid #222;
+    background-color: #303030;
+}
+@keyframes animate{
+    0%{--a:0deg}
+    100%{--a:360deg}
+}
+form{
+    position: relative;
+    z-index: 1000;
+}
+
+form h2{
+    color: #fff;
+    font-weight: 500;
+    margin-bottom: 20px;
+    padding-top: 60px;
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+}
+.inputBox{
+    position: relative;
+    margin-bottom: 40px;
+    width: 240px;
+}
+.inputBox span{
+    position: absolute;
+    inset: -2px;
+    background: #f00;
+    z-index: 1;
+}
+.inputBox span::before{
+    content: '';
+    position: absolute;
+    inset: -2px;
+    /* width: 100%;
+    height: 100%; */
+    background: repeating-conic-gradient(from var(--a),#01dbc2 0%,#01dbc2 10%,transparent 10%,transparent 50%);
+    animation: animate 6s linear infinite;
+    box-shadow: 0 0 0 2px #000;
+}
+/* DELAY AL SEGUNDO SPAN */
+.inputBox:nth-child(2) span::before{
+    animation-delay: -1.5s;
+}
+/* DAR COLOR AL CONTENIDO DEL SPAN */
+.inputBox span::after{
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #292929;
+}
+
+/* AJUSTAR INPUTS */
+.inputBox input{
+    position: relative;
+    z-index: 10000;
+    outline: none;
+    border: none;
+    width: 100%;
+    background: transparent;
+    /* padding: 8px 14px; */
+}
+.inputBox input::placeholder{
+    font-family: 'Trebuchet MS';
+    /* text-transform: uppercase; */
+}
+.inputBox input[type ='submit']{
+    cursor: pointer;
+    background-color: #01dbc2;
+    box-shadow: 0 0 4px #01dbc2;
+    filter: (drop-shadow(0 0 15px #01dbc2));
+}
+.group{
+    position: relative;
+    padding-bottom: 60px;
+    display: flex;
+    justify-content: space-between;
+}
+.group a{
+    text-transform: uppercase;
+    font-weight: 500;
+}
+.group a:hover{
+    color: #01dbc2;
+    filter: (drop-shadow(0 0 5px #01dbc2));
+}
