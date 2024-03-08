@@ -109,6 +109,22 @@ const DialogDescription = React.forwardRef<
 ))
 DialogDescription.displayName = DialogPrimitive.Description.displayName
 
+const DialogMenuItem = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
+  ({ className, children, ...props }, ref) => (
+    <div
+      ref={ref}
+      className={cn(
+        'relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors hover:bg-accent focus:text-accent-foreground',
+        className
+      )}
+      {...props}
+    >
+      {children}
+    </div>
+  )
+);
+DialogMenuItem.displayName = "DialogMenuItem"
+
 export {
   Dialog,
   DialogPortal,
@@ -120,4 +136,5 @@ export {
   DialogFooter,
   DialogTitle,
   DialogDescription,
+  DialogMenuItem
 }

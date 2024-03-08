@@ -4,7 +4,7 @@ import { Badge } from "../../../components/UI/Badge"
 import { Checkbox } from "../../../components/UI/Checkbox"
  import { Song } from "./schema"
 import { DataTableColumnHeader } from "../../Artist/components/DataTableColumnHeader"
-// import { DataTableRowActions } from "./DataTableRowActions"
+import { DataTableRowActions } from "./DataTableRowActions"
 import React from "react"
 import { CaretSortIcon, DotsHorizontalIcon } from "@radix-ui/react-icons"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu"
@@ -47,7 +47,6 @@ export const Columns: ColumnDef<Song>[] = [
       // Formatear la duración en minutos y segundos
       const minutes = Math.floor(duration / 60);
       const seconds = Math.floor(duration % 60)
-
       // Agregar ceros a la izquierda si es necesario para mantener el formato mm:ss
       const formattedMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
       const formattedSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
@@ -79,61 +78,8 @@ export const Columns: ColumnDef<Song>[] = [
       return value.includes(row.getValue(id))
     },
   },
-  // {
-  //   id: "actions",
-  //   cell: ({ row }) => <DataTableRowActions row={row} />,
-  // },
-
-    // {
-    //   accessorKey: "duration",
-    //   header: () => <div className="text-right">Duration</div>,
-    //   cell: ({ row }) => {
-    //     const duration = parseFloat(row.getValue("duration"))
-    //     // Formatear la duración en minutos y segundos
-    //     const minutes = Math.floor(duration / 60);
-    //     const seconds = Math.floor(duration % 60)
-  
-    //     // Agregar ceros a la izquierda si es necesario para mantener el formato mm:ss
-    //     const formattedMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
-    //     const formattedSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
-    //     // Format the seconds as a timeFormat
-    //     const formatted = `${formattedMinutes}:${formattedSeconds}`;
-  
-    //     return <div className="text-right font-medium">{formatted}</div>
-    //   },
-    // },
-    // {
-    //   accessorKey: "genre",
-    //   header: "Genre",
-    // },
-    // {
-    //   id: "actions",
-    //   // enableHiding: false,
-    //   header: "Actions",
-    //   cell: ({ row }) => {
-    //     //const payment = row.original
-  
-    //     return (
-    //       <DropdownMenu>
-    //         <DropdownMenuTrigger asChild>
-    //           <Button variant="ghost">
-    //             <span className="sr-only">Open menu</span>
-    //             <DotsHorizontalIcon className="h-4 w-4" />
-    //           </Button>
-    //         </DropdownMenuTrigger>
-    //         <DropdownMenuContent align="end">
-    //           <DropdownMenuLabel>Actions</DropdownMenuLabel>
-    //           <DropdownMenuItem
-    //             onClick={() => navigator.clipboard.writeText("payment.id")}
-    //           >
-    //             Copy ID
-    //           </DropdownMenuItem>
-    //           <DropdownMenuSeparator />
-    //           <DropdownMenuItem>Edit</DropdownMenuItem>
-    //           <DropdownMenuItem>Delete</DropdownMenuItem>
-    //         </DropdownMenuContent>
-    //       </DropdownMenu>
-    //     )
-    //   },
-    // },
+  {
+    id: "actions",
+    cell: ({ row }) => <DataTableRowActions row={row} />,
+  },
   ]

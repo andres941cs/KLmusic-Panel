@@ -1,4 +1,4 @@
-import { Label } from "@radix-ui/react-dropdown-menu"
+import { Label } from "../../../components/UI/Label"
 import { Button } from "../../../components/UI/Button"
 import {
   Dialog,
@@ -6,28 +6,30 @@ import {
   DialogDescription,
   DialogFooter,
   DialogHeader,
+  DialogMenuItem,
   DialogTitle,
   DialogTrigger,
 } from "../../../components/UI/Dialog"
 import { Input } from "../../../components/UI/Input"
 import { useForm } from "react-hook-form"
+import React from "react"
 
 
-export function SongDialog() {
+export function SongDialog({data}) {
   const {
     register,
     handleSubmit,
     //watch,
     formState: { errors },
   } = useForm()
-  const onSubmit = (data) => {
-    const URL ="http://127.0.0.1:8000/api/song";
+  const onSubmit = (song) => {
+    const URL = `http://127.0.0.1:8000/api/song${data ? `/${data.id}` : ''}`;
       const PARAMS = {
-        method: 'POST',
+        method: data ? 'PUT' : 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body:JSON.stringify(data)
+        body:JSON.stringify(song)
       }
       fetch(URL,PARAMS)
         .then(response => {
@@ -36,44 +38,48 @@ export function SongDialog() {
             }
             return response.json();
         })
-        .then(data => {
-            console.log(data);
+        .then(song => {
+            console.log(song);
+            setOpen(false);
         })
         .catch(error => {
             console.error("Error during fetch operation:", error);
         });
   }
+  const [open, setOpen] = React.useState(false);
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="outline">Insert Song</Button>
+        {
+          data?<DialogMenuItem>Edit</DialogMenuItem>:<Button variant="outline">Insert Song</Button>
+        }
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>INSERT SONG</DialogTitle>
+          <DialogTitle className="text-foreground">{data?'EDIT SONG':'INSERT SONG'}</DialogTitle>
           <DialogDescription>
-            Fill this form to create a song. Click save when you re done.
+            Fill this form to {data?'edit':'insert'} a song. Click save when you re done.
           </DialogDescription>
         </DialogHeader>
-        <form onSubmit={handleSubmit(onSubmit)} className="grid gap-4 py-4">
+        <form onSubmit={handleSubmit(onSubmit)} className="text-foreground grid gap-4 py-4">
           <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="name" className="text-right">
+            <Label htmlFor="name" className="text-foreground text-right">
               Name
             </Label>
-            <Input id="name" {...register("name")} placeholder="Name Song" className="col-span-3" />
+            <Input id="name" {...register("name")} placeholder="Name Song" defaultValue={data?data.name:''} className="col-span-3" />
             {errors.exampleRequired && <span>This field is required</span>}
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="duration" className="text-right">
+            <Label htmlFor="duration" className="text-foreground text-right">
               Duration
             </Label>
-            <Input id="duration" {...register("duration")} placeholder="Duration" className="col-span-3" />
+            <Input id="duration" {...register("duration")} placeholder="Duration" defaultValue={data?data.duration:''} className="col-span-3" />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="genre" className="text-right">
+            <Label htmlFor="genre" className="text-foreground text-right">
               Genre
             </Label>
-            <Input id="genre" {...register("genre")} placeholder="Genre" className="col-span-3" />
+            <Input id="genre" {...register("genre")} placeholder="Genre" defaultValue={data && data.genre || ''} className="col-span-3" />
           </div>
         
         <DialogFooter>
