@@ -1,5 +1,6 @@
 import './Login.css'
 function LoginPage() {
+    
     return ( 
         <section>
             <div className="box">

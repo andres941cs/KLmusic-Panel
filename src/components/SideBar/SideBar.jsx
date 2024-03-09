@@ -8,6 +8,7 @@ import LyricIcon from "../../assets/icons/LyricIcon";
 import PublicationIcon from "../../assets/icons/PublicationIcon";
 import AlbumIcon from "../../assets/icons/AlbumIcon";
 import LogoutIcon from "../../assets/icons/LogoutIcon";
+import KaraokeIcon from "../../assets/icons/KaraokeIcon";
 
 function SideBar() {
     const [open,setOpen] = useState(true);
@@ -58,12 +59,17 @@ function SideBar() {
                         </Link>
                     </li>
                     <li>
-                        <Link to="/publication" className="flex gap-3 p-1 md:p-2 text-gray-400 font-semibold rounded-md hover:bg-slate-100">
-                            <PublicationIcon className="min-h-5 min-w-5 h-7 w-7"></PublicationIcon>
-                            <span className={`hidden md:block my-auto ${open?"md:block":"md:hidden"}`}>Publications</span>
+                        <Link to="/karaoke" className="flex gap-3 p-1 md:p-2 text-gray-400 font-semibold rounded-md hover:bg-slate-100">
+                            <KaraokeIcon className="min-h-5 min-w-5 h-7 w-7"></KaraokeIcon>
+                            <span className={`hidden md:block my-auto ${open?"md:block":"md:hidden"}`}>Karaoke</span>
                         </Link>
                     </li>
-
+                    <li>
+                        <Link to="/publication" className="flex gap-3 p-1 md:p-2 text-gray-400 font-semibold rounded-md hover:bg-slate-100">
+                            <PublicationIcon className="min-h-5 min-w-5 h-7 w-7"></PublicationIcon>
+                            <span className={`hidden md:block my-auto ${open?"md:block":"md:hidden"}`}>Publication</span>
+                        </Link>
+                    </li>
                     <li>
                         <Link to="/logout" className="flex gap-3 p-1 md:p-2 text-gray-400 font-semibold rounded-md hover:bg-slate-100">
                             <LogoutIcon className="min-h-5 min-w-5 h-7 w-7"></LogoutIcon>

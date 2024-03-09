@@ -7,14 +7,15 @@ export interface RouterProps {
   element: React.ReactNode;
 }
 /* COMPONENTE */
- function ProtectedRoute ({ path,element }:RouterProps): React.ReactElement  {
+//  function ProtectedRoute ({ path,element }:RouterProps): React.ReactElement  {
+  function ProtectedRoute (children){
   const { isAuthenticated } = useAuth();
   if (!isAuthenticated) {
     // REDIRECCIONAR AL LOGIN SI EL USUARIO NO ESTA AUTENTICADO
     return <Navigate to="/login" replace />; 
   }
-  
-  return (<Route path={path} element={element} />);
+  return children
+  // return (<Route path={path} element={element} />);
 };
 
 export default ProtectedRoute;
