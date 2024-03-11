@@ -3,8 +3,8 @@ import { useState,useEffect } from 'react';
 import { DataDialog } from './components/DataDialog';
 import { DataTable } from '../../components/UI/DataTable';
 import {Columns} from './components/Columns'
-import { PublicationSchema } from './data/schema'; 
-import { getData } from './data/data';
+import { PublicationSchema } from '../../schemas/PublicationSchema';
+import { getData } from '../../utils/data'
 function PublicationPage() {
 
     const [data, setData] = useState([]);

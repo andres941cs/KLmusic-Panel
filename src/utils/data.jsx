@@ -1,6 +1,7 @@
-const API = "http://127.0.0.1:8000/api/";
+import { API_URL } from "./constantes";
+/* PETICIONES AL API */
 export async function getData(table) {
-    const URL = `${API}${table}`;
+    const URL = `${API_URL}${table}`;
     try {
         const response = await fetch(URL);
         if (!response.ok) {
@@ -15,7 +16,7 @@ export async function getData(table) {
 }
 
 export async function addData(table,data) {
-    const URL = `${API}${table}/${data.id}`;
+    const URL = `${API_URL}${table}/${data.id}`;
     const PARAMS = {
         method: 'POST',
         headers: {
@@ -39,7 +40,7 @@ export async function addData(table,data) {
 }
 
 export async function editData(table,data) {
-    const URL = `${API}${table}/${data.id}`;
+    const URL = `${API_URL}${table}/${data.id}`;
     const PARAMS = {
         method: 'PUT',
         headers: {
@@ -62,7 +63,7 @@ export async function editData(table,data) {
 }
 
 export async function deleteData(table,data) {
-    const URL = `http://127.0.0.1:8000/api/${table}/${data.id}`;
+    const URL = `${API_URL}${table}/${data.id}`;
     const PARAMS = {
         method: 'DELETE',
         headers: {

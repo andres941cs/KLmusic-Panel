@@ -20,7 +20,7 @@ import {
 
 
 import React from "react"
-import { UserSchema } from "./schema"
+import { UserSchema } from "../../schemas/UserSchema"
 import { deleteUser } from "./data"
 import { EditDialog } from "./EditDialog"
 import { DialogItem } from "./DialogItem"

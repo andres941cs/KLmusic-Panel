@@ -13,8 +13,7 @@ import { Input } from "../../components/UI/Input"
 import { useForm } from "react-hook-form"
 import React, { useState } from "react"
 import { DropdownMenuItem } from "../../components/UI/DropdownMenu"
-import {UserSchema} from "./schema"
-
+import { UserSchema } from "../../schemas/UserSchema"
 export function EditDialog({user}) {
   const {
     register,

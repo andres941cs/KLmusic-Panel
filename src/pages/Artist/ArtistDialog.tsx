@@ -14,8 +14,6 @@ import { useForm } from "react-hook-form"
 import React, { useState } from "react"
 import { PlusCircledIcon } from "@radix-ui/react-icons"
 import { Checkbox } from "../../components/UI/Checkbox"
-import { Switch } from "@radix-ui/react-switch"
-
 
 export function ArtistDialog() {
   const {

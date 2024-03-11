@@ -3,8 +3,8 @@ import { useState,useEffect } from 'react';
 import { DataDialog } from './components/DataDialog';
 import { DataTable } from '../../components/UI/DataTable';
 import {Columns} from './components/Columns'
-import { LyricSchema } from './data/schema'; 
-import { getData } from './data/data';
+import { LyricSchema } from '../../schemas/LyricSchema'; 
+import { getData } from '../../utils/data';
 function LyricPage() {
 
     const [data, setData] = useState([]);

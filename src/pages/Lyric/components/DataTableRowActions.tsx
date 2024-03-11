@@ -20,8 +20,8 @@ import {
 
 
 import React from "react"
-import { LyricSchema } from "../data/schema"
-import { deleteData } from "../data/data"
+import { LyricSchema } from "../../../schemas/LyricSchema"
+import { deleteData } from "../../../utils/data"
 import { DataDialog } from "./DataDialog"
 
 

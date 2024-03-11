@@ -20,8 +20,8 @@ import {
 
 
 import React from "react"
-import { PublicationSchema } from "../data/schema"
-import { deleteData } from "../data/data"
+import { PublicationSchema } from "../../../schemas/PublicationSchema"
+import { deleteData } from "../../../utils/data"
 import { DataDialog } from "./DataDialog"
 
 

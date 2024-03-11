@@ -5,6 +5,7 @@ import { AuthContext } from './AuthContext.jsx';
 import './Login.css'
 import { Button } from "../../components/UI/Button";
 import { useToast } from "../../components/UI/UseToast";
+import { API_URL } from "../../utils/constantes.js";
 
 function LoginPage() {
     const {
@@ -18,7 +19,8 @@ function LoginPage() {
     const { toast } = useToast()
     const onSubmit = async (data)  =>  {
         try {
-            const URL = "http://127.0.0.1:8000/api/login";
+            const URL = `${API_URL}/api/login`;
+            console.log(API_URL)
             const response = await fetch(URL, {
               method: 'POST',
               headers: {
