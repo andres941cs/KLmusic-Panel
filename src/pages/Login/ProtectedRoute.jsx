@@ -1,22 +1,17 @@
 /* IMPORTACIONES */
-import React, { useContext } from 'react';
-import { Route, Navigate, Outlet } from 'react-router-dom';
-import { AuthContext,useAuth } from './AuthContext';
-export interface RouterProps {
-  path: string;
-  element: React.ReactNode;
-}
+import { useContext } from 'react';
+import { Navigate, Outlet } from 'react-router-dom';
+import { AuthContext } from './AuthContext';
+
 /* COMPONENTE */
-//  function ProtectedRoute ({ path,element }:RouterProps): React.ReactElement  {
-  function ProtectedRoute (children){
-  const { isAuthenticated } = useAuth();
+function ProtectedRoute (){
+  const { isAuthenticated } = useContext(AuthContext);
   if (!isAuthenticated) {
     // REDIRECCIONAR AL LOGIN SI EL USUARIO NO ESTA AUTENTICADO
     return <Navigate to="/login" replace />; 
   }
-  return children
-  // return (<Route path={path} element={element} />);
-};
+  return <Outlet/>
+}
 
 export default ProtectedRoute;
 

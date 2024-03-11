@@ -1,21 +1,74 @@
+import { useForm } from "react-hook-form"
+import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from './AuthContext.jsx';
 import './Login.css'
+import { Button } from "../../components/UI/Button";
+import { useToast } from "../../components/UI/UseToast";
+
 function LoginPage() {
+    const {
+        register,
+        handleSubmit,
+        watch,
+        formState: { errors },
+      } = useForm()
+    const navigate = useNavigate();
+    const { login } = useContext(AuthContext);
+    const { toast } = useToast()
+    const onSubmit = async (data)  =>  {
+        try {
+            const URL = "http://127.0.0.1:8000/api/login";
+            const response = await fetch(URL, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(data),
+            });
+      
+            if (response.ok) {
+              const data = await response.json();
+              // STORE AUTHENTICAION DATA (TOKEN, USERT OBJECT) In Context or Local Storage
+              login(data); 
+            //   } else {
+            //     localStorage.setItem('authToken', data.token); // Example using local storage
+            //   }
+              // REDIRECT TO => PROTECTED ROUTE
+              navigate('/');
+            } else {
+              /* HANDLE FAILEN LOGIN ATTEMPS */
+              // DISPLAY ERROR MESSAGES
+              const message = await response.text()
+              toast({
+                variant: "destructive",
+                title: "ERROR",
+                description: message,
+              })
+            //   console.error('Login failed:', );
+            }
+        } catch (error) {
+            console.error('Login error:', error);
+        }
+    }
     
+    // console.log(watch("email"))
     return ( 
         <section>
             <div className="box">
-                <form action="">
+                <form onSubmit={handleSubmit(onSubmit)}>
                     <h2>Login</h2>
                     <div className="inputBox">
                         <span></span>
-                        <input type="email" placeholder='Email'/>
+                        <input {...register("email")} type="email" placeholder='Email'/>
                     </div>
                     <div className="inputBox">
                         <span></span>
-                        <input type="password" placeholder='Password'/>
+                        <input  {...register("password")} type="password" placeholder='Password'/>
                     </div>
                     <div className="inputBox">
-                        <input type='submit' value={"Sign In"}/>
+                        {/* <input type='submit' value={"Sign In"}/> */}
+                        <Button className="w-full rounded">Sign In</Button>
                     </div>
                     <div className="group">
                         <a href="#">Forget Password</a>

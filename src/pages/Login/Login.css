@@ -4,9 +4,6 @@ section{
     align-items: center;
     height: 100%;
     background-color: #222;
-    /* margin: 0;
-    padding: 0;
-    box-sizing: border-box; */
 }
 @property --a
 {
@@ -21,7 +18,8 @@ section{
     display: flex;
     justify-content: center;
     align-items: center;
-    background: repeating-conic-gradient(from var(--a),#01dbc2 0%,#01dbc2 10%,transparent 10%,transparent 50%);
+    /* background: repeating-conic-gradient(from var(--a),#01dbc2 0%,#01dbc2 10%,transparent 10%,transparent 50%); */
+    background: repeating-conic-gradient(from var(--a),  #8c0154 0%, hsl(var(--primary) / 0.9),transparent 10%,transparent 50%);
     animation: animate 6s linear infinite ;
 }
 .box::before{
@@ -29,7 +27,7 @@ section{
     position: absolute;
     width: 100%;
     height: 100%;
-    background: repeating-conic-gradient(from var(--a),#01dbc2 0%,#01dbc2 10%,transparent 10%,transparent 50%);
+    background: repeating-conic-gradient(from var(--a),#8c0154 0%, hsl(var(--primary) / 0.9) 10%,transparent 10%,transparent 50%);
     animation: animate 6s linear infinite;
     animation-delay: -1.5s;
 }
@@ -75,7 +73,7 @@ form h2{
     inset: -2px;
     /* width: 100%;
     height: 100%; */
-    background: repeating-conic-gradient(from var(--a),#01dbc2 0%,#01dbc2 10%,transparent 10%,transparent 50%);
+    background: repeating-conic-gradient(from var(--a),#8c0154 0%, hsl(var(--primary) / 0.9) 10%,transparent 10%,transparent 50%);
     animation: animate 6s linear infinite;
     box-shadow: 0 0 0 2px #000;
 }
@@ -99,7 +97,7 @@ form h2{
     border: none;
     width: 100%;
     background: transparent;
-    /* padding: 8px 14px; */
+    padding-inline: 0.5rem;
 }
 .inputBox input::placeholder{
     font-family: 'Trebuchet MS';
@@ -107,12 +105,12 @@ form h2{
 }
 .inputBox input[type ='submit']{
     cursor: pointer;
-    background-color: #01dbc2;
-    box-shadow: 0 0 4px #01dbc2;
-    filter: (drop-shadow(0 0 15px #01dbc2));
+    background-color: hsl(var(--primary) / 0.9);
+    box-shadow: 0 0 4px #8c0154 0%;
+    filter: (drop-shadow(0 0 15px #8c0154 0%));
 }
 .group{
-    position: relative;
+    position: relative; 
     padding-bottom: 60px;
     display: flex;
     justify-content: space-between;
@@ -122,6 +120,6 @@ form h2{
     font-weight: 500;
 }
 .group a:hover{
-    color: #01dbc2;
+    color: hsl(var(--primary) / 0.9);
     filter: (drop-shadow(0 0 5px #01dbc2));
 }

@@ -1,37 +1,39 @@
 
 // import './assets/'
+import { useContext } from 'react';
+
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css'
 import SideBar from './components/SideBar/SideBar'
 import HomePage from './pages/Home/HomePage'
 import AlbumPage from './pages/Album/AlbumPage.jsx';
 import SongPage from './pages/Song/SongPage.jsx';
-import ProtectedRoute from './pages/Login/ProtectedRoute';
+import ProtectedRoute from './pages/Login/ProtectedRoute.jsx';
 import LoginPage from './pages/Login/LoginPage';
 import Header from './components/Header/Header';
 import UserPage from './pages/User/UserPage';
 import ArtistPage from './pages/Artist/ArtistPage';
 import Footer from './components/Footer/Footer';
-import { AuthProvider } from './pages/Login/AuthContext';
+import {AuthContext} from './pages/Login/AuthContext.jsx';
 import PublicationPage from './pages/Publication/PublicationPage.jsx';
 import KaraokePage from './pages/Karaoke/KaraokePage.jsx';
 import LyricPage from './pages/Lyric/LyricPage.jsx';
-
+import { Toaster } from "./components/UI/Toaster"
 
 function App() {
 
-
+  const { isAuthenticated } = useContext(AuthContext);
   return (
     <>
-      <AuthProvider>
+      {/* <AuthProvider> */}
       <BrowserRouter>
-      <SideBar></SideBar>
+      {isAuthenticated&&<SideBar></SideBar>}
       
       <main className='bg-background text-foreground border'>
       <Header></Header>
       <Routes>
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/" element={<ProtectedRoute />}>
+        <Route element={<ProtectedRoute />}>
           
           {/* <Route path="/user" element={<ProtectedRoute path="/user" element={<UserPage/>}/>}/> */}
           {/* <ProtectedRoute path="/" element={<UserPage/>}/> */}
@@ -48,7 +50,8 @@ function App() {
       <Footer></Footer>
       </main>
     </BrowserRouter>
-    </AuthProvider>
+    <Toaster />
+    {/* </AuthProvider> */}
     </>
   )
 }

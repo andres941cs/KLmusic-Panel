@@ -21,9 +21,9 @@ function Header() {
 
     return ( 
         // bg-white dark:bg-[#242424]
-        <header className='h-12   border-b'>
-            <button onClick={changeTheme} className="hover:bg-accent hover:text-accent-foreground h-9 py-2 w-9 px-0">
-            {theme=="light" ? <SunIcon></SunIcon> : <MoonIcon></MoonIcon>}
+        <header className='h-12 grid border-b'>
+            <button onClick={changeTheme} className="self-center justify-self-end hover:bg-accent hover:text-accent-foreground h-9 py-2 w-9 mx-2">
+            {theme=="light" ? <SunIcon className="m-auto"/> : <MoonIcon className="m-auto"/>}
             </button>
         </header>
      );
