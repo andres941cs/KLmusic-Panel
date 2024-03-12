@@ -37,7 +37,7 @@ function App() {
           
           {/* <Route path="/user" element={<ProtectedRoute path="/user" element={<UserPage/>}/>}/> */}
           {/* <ProtectedRoute path="/" element={<UserPage/>}/> */}
-          <Route path="/" element={<HomePage />} />
+          <Route index element={<HomePage />} />
           <Route path="/user" element={<UserPage />} />
           <Route path="/song" element={<SongPage />} />
           <Route path="/artist" element={<ArtistPage />} />

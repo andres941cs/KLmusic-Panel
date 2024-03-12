@@ -25,7 +25,7 @@ function SideBar() {
             <nav className={`w-full ${open?"md:px-6":"px-1"}`}>
                 <ul role="list" className="flex items-center md:items-stretch flex-col">
                     <li>
-                        <a href="#" className="flex gap-3 p-1 md:p-2 text-gray-400 font-semibold rounded-md hover:bg-slate-100">
+                        <a href="/" className="flex gap-3 p-1 md:p-2 text-gray-400 font-semibold rounded-md hover:bg-slate-100">
                             <HomeIcon className="min-h-5 min-w-5 h-7 w-7"></HomeIcon>
                             <span className={`hidden my-auto ${open?"md:block":"md:hidden"}`}>Dashboard</span>
                         </a>

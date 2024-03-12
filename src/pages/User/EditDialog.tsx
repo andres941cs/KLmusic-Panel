@@ -26,7 +26,6 @@ export function EditDialog({user}) {
   console.log(user)
   /* EVENTO DEL FORMULARIO */
   const onSubmit = (data) => {
-    console.log(user.id)
     const URL =`${API_URL}user/${user.id}`;
       const PARAMS = {
         method: 'PUT',
