@@ -1,9 +1,9 @@
 //import { Button } from "../../components/UI/Button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ArtistDialog } from "./ArtistDialog";
 import { columns } from "./Columns"
 import { DataTable } from "./components/DataTable"
-import { getData } from "./data/data";
+import { getData } from "../../utils/data";
 
 function ArtistPage() {
     const [data, setData] = useState([]);

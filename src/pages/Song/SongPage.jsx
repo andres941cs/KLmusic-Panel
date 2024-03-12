@@ -2,12 +2,14 @@ import { useState,useEffect } from 'react';
 import { SongDialog } from './components/SongDialog';
 import { DataTable } from '../../components/UI/DataTable';
 import {Columns} from './components/Columns'
+import { API_URL } from '../../utils/constantes';
 function SongPage() {
 
     const [data, setData] = useState([]);
     useEffect(() => {
          async function getData() {
-            const URL = "http://127.0.0.1:8000/api/songs";
+
+            const URL = `${API_URL}songs`;
             try {
                 const response = await fetch(URL);
             

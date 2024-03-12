@@ -19,7 +19,7 @@ function LoginPage() {
     const { toast } = useToast()
     const onSubmit = async (data)  =>  {
         try {
-            const URL = `${API_URL}/api/login`;
+            const URL = `${API_URL}login`;
             console.log(API_URL)
             const response = await fetch(URL, {
               method: 'POST',

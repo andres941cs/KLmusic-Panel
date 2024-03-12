@@ -14,6 +14,7 @@ import { useForm } from "react-hook-form"
 import React, { useState } from "react"
 import { PlusCircledIcon } from "@radix-ui/react-icons"
 import { Checkbox } from "../../components/UI/Checkbox"
+import { API_URL } from "../../utils/constantes"
 
 export function ArtistDialog() {
   const {
@@ -24,7 +25,7 @@ export function ArtistDialog() {
   } = useForm()
   const onSubmit = (data) => {
     console.log(data)
-    const URL ="http://127.0.0.1:8000/api/artist";
+    const URL =`${API_URL}artist`;
       const PARAMS = {
         method: 'POST',
         headers: {
@@ -57,13 +58,13 @@ export function ArtistDialog() {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button className="flex gap-2" variant="outline"><PlusCircledIcon/>Insert Song</Button>
+        <Button className="flex gap-2" variant="outline"><PlusCircledIcon/>Insert Artist</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>INSERT SONG</DialogTitle>
+          <DialogTitle>INSERT ARTIST</DialogTitle>
           <DialogDescription>
-            Fill this form to create a song. Click save when you re done.
+            Fill this form to create a artist. Click save when you re done.
           </DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit(onSubmit)} className="grid gap-4 py-4">

@@ -19,7 +19,7 @@ import {
 } from "../../../components/UI/DropdownMenu"
 
 import { labels } from "../data/data"
-import { ArtistSchema } from "../data/schema"
+import { ArtistSchema } from "../../../schemas/ArtistSchema"
 import React from "react"
 
 interface DataTableRowActionsProps<TData> {

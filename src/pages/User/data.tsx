@@ -1,7 +1,8 @@
+import { API_URL } from "../../utils/constantes";
 
 
 export async function getUsers() {
-    const URL = "http://127.0.0.1:8000/api/users";
+    const URL = `${API_URL}users`;
     try {
         const response = await fetch(URL);
     
@@ -21,7 +22,7 @@ export async function getUsers() {
 }
 
 export async function editUser(user) {
-    const URL = `http://127.0.0.1:8000/api/user/${user.id}`;
+    const URL = `${API_URL}/user/${user.id}`;
     const PARAMS = {
         method: user ? 'PUT' : 'POST',
         headers: {
@@ -48,7 +49,7 @@ export async function editUser(user) {
 }
 
 export async function deleteUser(user) {
-    const URL = `http://127.0.0.1:8000/api/user/${user.id}`;
+    const URL = `${API_URL}user/${user.id}`;
     const PARAMS = {
         method: 'DELETE',
         headers: {
