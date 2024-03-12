@@ -20,7 +20,6 @@ function LoginPage() {
     const onSubmit = async (data)  =>  {
         try {
             const URL = `${API_URL}login`;
-            console.log(API_URL)
             const response = await fetch(URL, {
               method: 'POST',
               headers: {

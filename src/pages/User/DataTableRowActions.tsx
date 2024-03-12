@@ -42,13 +42,7 @@ export function DataTableRowActions<TData>({
   };
 
   const [open, setOpen] = React.useState(false);
-  const  handleEdit: React.MouseEventHandler<HTMLDivElement> = async (event) => {
-    //event.preventDefault()
-    // setOpen(true)
-    console.log("hola")
-  }
-  console.log(row.original)
-  console.log(user)
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>

@@ -14,6 +14,7 @@ import { useForm } from "react-hook-form"
 import React, { useState } from "react"
 import { DropdownMenuItem } from "../../components/UI/DropdownMenu"
 import { UserSchema } from "../../schemas/UserSchema"
+import { API_URL } from "../../utils/constantes"
 export function EditDialog({user}) {
   const {
     register,
@@ -26,7 +27,7 @@ export function EditDialog({user}) {
   /* EVENTO DEL FORMULARIO */
   const onSubmit = (data) => {
     console.log(user.id)
-    const URL =`http://127.0.0.1:8000/api/user/${user.id}`;
+    const URL =`${API_URL}user/${user.id}`;
       const PARAMS = {
         method: 'PUT',
         headers: {

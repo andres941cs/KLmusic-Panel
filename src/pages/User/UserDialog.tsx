@@ -13,6 +13,7 @@ import { Input } from "../../components/UI/Input"
 import { useForm } from "react-hook-form"
 import React, { useState } from "react"
 import { PlusCircledIcon } from "@radix-ui/react-icons"
+import { API_URL } from "../../utils/constantes"
 
 
 export function UserDialog(user) {
@@ -25,7 +26,7 @@ export function UserDialog(user) {
   /* EVENTO DEL FORMULARIO */
   const onSubmit = (data) => {
     console.log(data)
-    const URL ="http://127.0.0.1:8000/api/user";
+    const URL =`${API_URL}user`;
       const PARAMS = {
         method: 'POST',
         headers: {
@@ -41,8 +42,8 @@ export function UserDialog(user) {
             return response.json();
         })
         .then(data => {
-            console.log(data);
             setOpen(false);
+
         })
         .catch(error => {
             console.error("Error during fetch operation:", error);
