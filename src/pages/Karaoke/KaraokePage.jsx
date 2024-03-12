@@ -3,8 +3,8 @@ import { useState,useEffect } from 'react';
 import { DataDialog } from './components/DataDialog';
 import { DataTable } from '../../components/UI/DataTable';
 import {Columns} from './components/Columns'
-import { KaraokeSchema } from './data/schema'; 
-import { getData } from './data/data';
+import { KaraokeSchema } from '../../schemas/KaraokeSchema'
+import { getData } from '../../utils/data';
 function KaraokePage() {
 
     const [data, setData] = useState([]);
@@ -12,7 +12,6 @@ function KaraokePage() {
         getData('karaoke').then( (karaoke)=>{
             setData(karaoke);
         })
-        
     }, []);
 
     return ( 

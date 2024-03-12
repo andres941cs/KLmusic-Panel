@@ -18,7 +18,6 @@ function SongPage() {
                 }
             
                 const data = await response.json();
-                console.log(data)
                 setData(data);
                 //return z.array(ArtistSchema).parse(data)
             } catch (error) {
