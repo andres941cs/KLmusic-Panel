@@ -62,27 +62,27 @@ export function ArtistDialog() {
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>INSERT ARTIST</DialogTitle>
+          <DialogTitle className="text-foreground">INSERT ARTIST</DialogTitle>
           <DialogDescription>
             Fill this form to create a artist. Click save when you re done.
           </DialogDescription>
         </DialogHeader>
-        <form onSubmit={handleSubmit(onSubmit)} className="grid gap-4 py-4">
+        <form onSubmit={handleSubmit(onSubmit)} className="text-foreground grid gap-4 py-4">
           <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="name" className="text-right">
+            <Label htmlFor="name" className="text-foreground text-right">
               Name
             </Label>
             <Input id="name" {...register("name")} placeholder="Name Artist" className="col-span-3" />
             {errors.exampleRequired && <span>This field is required</span>}
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="country" className="text-right">
+            <Label htmlFor="country" className="text-foreground text-right">
               Country
             </Label>
             <Input id="country" {...register("country")} placeholder="Country" className="col-span-3" />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="isVerified" className="text-right">
+            <Label htmlFor="isVerified" className="text-foreground text-right">
               Verified
             </Label>
             {/* <input id="isVerified" {...register("isVerified")} type="checkbox" checked={isChecked} onChange={handleChange} /> */}
