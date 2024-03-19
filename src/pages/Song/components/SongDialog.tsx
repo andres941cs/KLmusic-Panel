@@ -22,10 +22,9 @@ export function SongDialog({data}) {
     //watch,
     formState: { errors },
   } = useForm()
-  console.log(data)
+
   const onSubmit = (song) => {
     // PERSONALIZAR EL ENVIO
-    
     const formData = new FormData();
     formData.append('name', song.name);
     formData.append('duration', song.duration);
@@ -34,9 +33,6 @@ export function SongDialog({data}) {
     if(!data)formData.append('image', song.image[0]);
 
     const URL = `http://127.0.0.1:8000/api/song${data ? `/${data.id}` : ''}`;
-    console.log(URL)
-    console.log(formData)
-    console.log(song)
       const PARAMS = {
         method: data ? 'PUT' : 'POST',
         headers: data && { 'Content-Type': 'application/x-www-form-urlencoded' },
