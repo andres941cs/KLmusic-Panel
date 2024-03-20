@@ -31,7 +31,7 @@ export function ArtistDialog({artist}) {
     formData.append('country', data.country);
     formData.append('verified', data.verified);
     if(!artist)formData.append('image', data.image[0]);
-
+    console.log(data)
     const URL = `${API_URL}artist${artist ? `/${artist.id}` : ''}`;
       const PARAMS = {
         method: artist ? 'PUT' : 'POST',
@@ -54,7 +54,7 @@ export function ArtistDialog({artist}) {
         });
     
   }
-  const [isChecked, setIsChecked] = useState(false);
+  const [isChecked, setIsChecked] = useState(artist?artist.verified:false);
   const handleChange = () => {
     setValue('verified', !isChecked? 1 : 0);
     setIsChecked(!isChecked);
@@ -93,7 +93,8 @@ export function ArtistDialog({artist}) {
               Verified
             </Label>
             {/* <input id="isVerified" {...register("isVerified")} type="checkbox" checked={isChecked} onChange={handleChange} /> */}
-            <Checkbox  id="isVerified" {...register("verified")} defaultValue={artist?artist.verified:0}  onCheckedChange={handleChange}/>
+            {/* <Checkbox  id="isVerified" {...register("verified")} value={artist?artist.verified:0} checked={artist?artist.verified:0}   onCheckedChange={handleChange}/> */}
+            <Checkbox  id="isVerified" {...register("verified")} value={isChecked?1:0} defaultChecked={isChecked}   onCheckedChange={handleChange}/>
           </div>
           {!artist &&
           <div className="grid grid-cols-4 items-center gap-4">
