@@ -2,12 +2,13 @@ import { ColumnDef } from "@tanstack/react-table"
 import { Button } from "../../../components/UI/Button"
 import { Badge } from "../../../components/UI/Badge"
 import { Checkbox } from "../../../components/UI/Checkbox"
- import { Lyric } from "../data/schema"
+
 import { DataTableColumnHeader } from "../../Artist/components/DataTableColumnHeader"
 import { DataTableRowActions } from "./DataTableRowActions"
 import React from "react"
 import { CaretSortIcon, DotsHorizontalIcon } from "@radix-ui/react-icons"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu"
+import { Lyric } from "../../../schemas/LyricSchema"
 // INTERFACE
 
 /* COLUMNDAS DE LA TABLA AJUSTAR*/
@@ -40,20 +41,32 @@ export const Columns: ColumnDef<Lyric>[] = [
     },
   },
   {
-    accessorKey: "lyric_romaji",
+    accessorKey: "language",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Lyric Romaji" />
+      <DataTableColumnHeader column={column} title="Language" />
     ),
     cell: ({ row }) => {
-      const lyric_romaji = row.getValue("lyric_romaji").slice(0, 100);
     return (
         <div className="flex items-center">
-          <span>{lyric_romaji}</span>
+          <span>{row.getValue("language")}</span>
         </div>
       )
     },
     filterFn: (row, id, value) => {
       return value.includes(row.getValue(id))
+    },
+  },
+  {
+    accessorKey: "isInstrumental",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Instrumental" />
+    ),
+    cell: ({ row }) => {
+    return (
+        <div className="flex items-center">
+          <span>{row.getValue("isInstrumental")}</span>
+        </div>
+      )
     },
   },
   {

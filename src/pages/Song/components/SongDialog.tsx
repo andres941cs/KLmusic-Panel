@@ -22,14 +22,21 @@ export function SongDialog({data}) {
     //watch,
     formState: { errors },
   } = useForm()
+
   const onSubmit = (song) => {
+    // PERSONALIZAR EL ENVIO
+    const formData = new FormData();
+    formData.append('name', song.name);
+    formData.append('duration', song.duration);
+    formData.append('genre', song.genre);
+    formData.append('id_artist', song.id_artist);
+    if(!data)formData.append('image', song.image[0]);
+
     const URL = `http://127.0.0.1:8000/api/song${data ? `/${data.id}` : ''}`;
       const PARAMS = {
         method: data ? 'PUT' : 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body:JSON.stringify(song)
+        headers: data && { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: data?new URLSearchParams(song).toString():formData
       }
       fetch(URL,PARAMS)
         .then(response => {
@@ -81,6 +88,20 @@ export function SongDialog({data}) {
             </Label>
             <Input id="genre" {...register("genre")} placeholder="Genre" defaultValue={data && data.genre || ''} className="col-span-3" />
           </div>
+          <div className="grid grid-cols-4 items-center gap-4">
+            <Label htmlFor="id_artist" className="text-foreground text-right">
+              ID Artist
+            </Label>
+            <Input id="id_artist" {...register("id_artist")} placeholder="Id Artist" defaultValue={data && data.id_artist || ''} className="col-span-3" />
+          </div>
+          {!data &&
+          <div className="grid grid-cols-4 items-center gap-4">
+            <Label htmlFor="genre" className="text-foreground text-right">
+              Image
+            </Label>
+            <Input id="image" {...register("image")}  type="file"  className="file:text-muted-foreground col-span-3" />
+          </div>
+          }
         
         <DialogFooter>
           <Button className=" bg-gray-600 rounded-md hover:bg-gray-600/90" type="submit">Save</Button>

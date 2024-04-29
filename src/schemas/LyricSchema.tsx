@@ -3,7 +3,8 @@ import { z } from "zod"
 export const LyricSchema = z.object({
   id: z.number(),
   lyric: z.string(),
-  lyric_romaji: z.string(),
+  language: z.string(),
+  isInstrumental: z.number(),
   url: z.string(),
   id_song: z.number()
 })
