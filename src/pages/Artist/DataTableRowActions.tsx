@@ -8,19 +8,10 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem,
-  DropdownMenuSeparator,
   DropdownMenuShortcut,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "../../components/UI/DropdownMenu"
-
-
-import React from "react"
-import { ArtistSchema } from "./data/schema"
+import { ArtistSchema } from "@schemas/ArtistSchema"
 
 interface DataTableRowActionsProps<TData> {
   row: Row<TData>

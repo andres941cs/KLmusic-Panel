@@ -6,7 +6,6 @@ import {Columns} from './components/Columns'
 import { LyricSchema } from '../../schemas/LyricSchema'; 
 import { getData } from '../../utils/data';
 function LyricPage() {
-
     const [data, setData] = useState([]);
     useEffect(() => {
         getData('lyric').then( (albums)=>{

@@ -5,6 +5,7 @@ export const AlbumSchema = z.object({
   name: z.string(),
   release_date: z.string(),
   genre: z.string(),
+  image: z.string().optional(),
   id_artist: z.number()
 })
 

@@ -13,9 +13,22 @@ import {
 import { Input } from "../../../components/UI/Input"
 import { useForm } from "react-hook-form"
 import React from "react"
+import { Karaoke } from "@schemas/KaraokeSchema"
+import { z } from "zod"
 
-
-export function DataDialog({name,schema,data}) {
+interface IDialogKaraoke {
+  name: string;
+  schema: z.ZodRawShape;
+  data: Karaoke;
+}
+// interface IFormKaraoke {
+//   settings: string;
+//   publication_date: string;
+//   isPublished: number;
+//   id_lyric: number;
+//   id_user: number;
+// }
+export function DataDialog({name,schema,data}:IDialogKaraoke) {
   const {
     register,
     handleSubmit,
@@ -23,9 +36,11 @@ export function DataDialog({name,schema,data}) {
     formState: { errors },
   } = useForm()
   const campos = Object.keys(schema.shape);
+  console.log(schema)
+  
   const filteredCampos = campos.filter((campo) => campo !== 'id');
 
-  const onSubmit = (element) => {
+  const onSubmit = (element:Karaoke) => {
     const URL = `http://127.0.0.1:8000/api/${name}${data ? `/${data.id}` : ''}`;
     console.log(element)
       const PARAMS = {
@@ -65,17 +80,17 @@ export function DataDialog({name,schema,data}) {
             Fill this form to {data?'edit':'insert'} a {name}. Click save when you re done.
           </DialogDescription>
         </DialogHeader>
-        <form onSubmit={handleSubmit(onSubmit)} className="text-foreground grid gap-4 py-4">
+        <form onSubmit={handleSubmit(()=>onSubmit)} className="text-foreground grid gap-4 py-4">
         {filteredCampos.map((item) => (
-        <div  key={item} className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor={item} className="text-foreground text-right capitalize">
-            {item}
-            </Label>
-            <Input id={item} {...register(item)} placeholder={item} defaultValue={data?data[item]:''} className="col-span-3" />
-        {errors.exampleRequired && <span>This field is required</span>}
+        <div key={item} className="grid grid-cols-4 items-center gap-4">
+          <Label htmlFor={item} className="text-foreground text-right capitalize">
+          {item}
+          </Label>
+          <Input id={item} {...register(item)} placeholder={item} defaultValue={data ? data[item as keyof typeof data] : ''} className="col-span-3" />
+        {errors && <span>This field is required</span>}
         </div>
         ))}
-          
+
           {/*<div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="duration" className="text-foreground text-right">
               Duration

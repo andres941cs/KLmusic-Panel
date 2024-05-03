@@ -11,13 +11,19 @@ import {
 } from "../../components/UI/Dialog"
 import { Input } from "../../components/UI/Input"
 import { useForm } from "react-hook-form"
-import React, { useState } from "react"
+
 import { PlusCircledIcon } from "@radix-ui/react-icons"
-import { API_URL } from "../../utils/constantes"
+
 import { Label } from "../../components/UI/Label"
+import { User } from "@schemas/UserSchema"
+import { useState } from "react"
+import { API_URL } from "@utils/constants"
 
 
-export function UserDialog(user) {
+
+
+
+export function UserDialog() {
   const {
     register,
     handleSubmit,
@@ -25,7 +31,7 @@ export function UserDialog(user) {
     formState: { errors },
   } = useForm()
   /* EVENTO DEL FORMULARIO */
-  const onSubmit = (data) => {
+  const onSubmit = (data:User) => {
     console.log(data)
     const URL =`${API_URL}user`;
       const PARAMS = {
@@ -42,9 +48,7 @@ export function UserDialog(user) {
             }
             return response.json();
         })
-        .then(data => {
-            setOpen(false);
-
+        .then(() => {setOpen(false);
         })
         .catch(error => {
             console.error("Error during fetch operation:", error);
@@ -61,7 +65,7 @@ export function UserDialog(user) {
   
 
   // ESTADO DEL DIALOG
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] =useState(false);
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
@@ -74,7 +78,7 @@ export function UserDialog(user) {
             Fill this form to create a song. Click save when you re done.
           </DialogDescription>
         </DialogHeader>
-        <form onSubmit={handleSubmit(onSubmit)} className="text-foreground grid gap-4 py-4">
+        <form onSubmit={handleSubmit(()=>onSubmit)} className="text-foreground grid gap-4 py-4">
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="name" className="text-right">
                 Username

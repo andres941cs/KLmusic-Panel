@@ -11,21 +11,24 @@ import {
 } from "../../components/UI/Dialog"
 import { Input } from "../../components/UI/Input"
 import { useForm } from "react-hook-form"
-import React, { useState } from "react"
-// import { DropdownMenuItem } from "@components/UI/DropdownMenu"
-import { UserSchema } from "../../schemas/UserSchema"
-import { API_URL } from "../../utils/constantes"
-export function EditDialog({user}) {
+import { API_URL } from "../../utils/constants"
+import { useState } from "react"
+import { User } from "@schemas/UserSchema"
+
+interface IEditDialog {
+  user: User
+}
+export function EditDialog({user}:IEditDialog) {
   const {
     register,
     handleSubmit,
-    setValue ,
+    // setValue ,
     formState: { errors },
   } = useForm()
 
   console.log(user)
   /* EVENTO DEL FORMULARIO */
-  const onSubmit = (data) => {
+  const onSubmit = (data:User) => {
     const URL =`${API_URL}user/${user.id}`;
       const PARAMS = {
         method: 'PUT',
@@ -53,7 +56,7 @@ export function EditDialog({user}) {
 
 
   // ESTADO DEL DIALOG{...props} 
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
@@ -69,7 +72,7 @@ export function EditDialog({user}) {
             Fill this form to edit a song. Click save when you re done.
           </DialogDescription>
         </DialogHeader>
-        <form onSubmit={handleSubmit(onSubmit)} className="text-foreground grid gap-4 py-4">
+        <form onSubmit={handleSubmit(()=>onSubmit)} className="text-foreground grid gap-4 py-4">
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="name" className="text-right">
                 Username

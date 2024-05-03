@@ -1,13 +1,9 @@
 "use client"
 
 import { ColumnDef } from "@tanstack/react-table"
-import { Badge } from "../../components/UI/Badge"
-import { Checkbox } from "../../components/UI/Checkbox"
-import { labels, priorities, statuses } from "./data/data"
-import { Artist } from "../../schemas/ArtistSchema"
+import { Artist } from "@schemas/ArtistSchema"
 import { DataTableColumnHeader } from "./components/DataTableColumnHeader"
 import { DataTableRowActions } from "./components/DataTableRowActions"
-import React from "react"
 
 export const columns: ColumnDef<Artist>[] = [
   // {

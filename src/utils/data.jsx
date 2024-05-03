@@ -1,4 +1,5 @@
-import { API_URL } from "./constantes";
+import { API_URL } from "./constants";
+
 /* PETICIONES AL API */
 export async function getData(table) {
     const URL = `${API_URL}${table}`;

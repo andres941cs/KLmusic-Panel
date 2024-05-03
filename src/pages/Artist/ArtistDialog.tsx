@@ -11,32 +11,43 @@ import {
   DialogTrigger,
 } from "../../components/UI/Dialog"
 import { Input } from "../../components/UI/Input"
-import { useForm } from "react-hook-form"
-import React, { useState } from "react"
-import { PlusCircledIcon } from "@radix-ui/react-icons"
+import { SubmitHandler, useForm } from "react-hook-form"
+import { useState } from "react"
+// import { PlusCircledIcon } from "@radix-ui/react-icons"
 import { Checkbox } from "../../components/UI/Checkbox"
-import { API_URL } from "../../utils/constantes"
+import { API_URL } from "@utils/constants"
+import { Artist } from "@schemas/ArtistSchema"
 
-export function ArtistDialog({artist}) {
+interface IArtistDialog {
+  artist: Artist
+}
+interface IFormArtist {
+  name: string
+  country: string
+  verified: number
+  image: FileList
+}
+export function ArtistDialog({artist}:IArtistDialog) {
   const {
     register,
     handleSubmit,
-    setValue ,
+    setValue,
     formState: { errors },
-  } = useForm()
+  } = useForm<IFormArtist>()
 
-  const onSubmit = (data) => {
+  const onSubmit:SubmitHandler<IFormArtist> = (data) => {
+    console.log(data)
     const formData = new FormData();
     formData.append('name', data.name);
     formData.append('country', data.country);
-    formData.append('verified', data.verified);
-    if(!artist)formData.append('image', data.image[0]);
-    console.log(data)
+    formData.append('verified', data.verified.toString());
+    if(!artist)formData.append('image', data.image![0]);
+    
     const URL = `${API_URL}artist${artist ? `/${artist.id}` : ''}`;
       const PARAMS = {
         method: artist ? 'PUT' : 'POST',
         headers: artist && { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body:artist?new URLSearchParams(data).toString():formData
+        body:artist?new URLSearchParams(data.toString()):formData
       }
       fetch(URL,PARAMS)
         .then(response => {
@@ -54,12 +65,12 @@ export function ArtistDialog({artist}) {
         });
     
   }
-  const [isChecked, setIsChecked] = useState(artist?artist.verified:false);
+  const [isChecked, setIsChecked] = useState(artist?true:false);
   const handleChange = () => {
     setValue('verified', !isChecked? 1 : 0);
     setIsChecked(!isChecked);
   };
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
@@ -80,7 +91,7 @@ export function ArtistDialog({artist}) {
               Name
             </Label>
             <Input id="name" {...register("name")} defaultValue={artist?artist.name:''} placeholder="Name Artist" className="col-span-3" />
-            {errors.exampleRequired && <span>This field is required</span>}
+            {errors.name && <span>This field is required</span>}
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="country" className="text-foreground text-right">

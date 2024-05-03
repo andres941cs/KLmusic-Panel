@@ -1,14 +1,7 @@
 import { ColumnDef } from "@tanstack/react-table"
-import { Button } from "../../../components/UI/Button"
-import { Badge } from "../../../components/UI/Badge"
-import { Checkbox } from "../../../components/UI/Checkbox"
-
-import { DataTableColumnHeader } from "../../Artist/components/DataTableColumnHeader"
 import { DataTableRowActions } from "./DataTableRowActions"
-import React from "react"
-import { CaretSortIcon, DotsHorizontalIcon } from "@radix-ui/react-icons"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu"
-import { Karaoke } from "../../../schemas/PublicationSchema"
+import { Karaoke } from "@schemas/KaraokeSchema"
+import { DataTableColumnHeader } from "@pages/Artist/components/DataTableColumnHeader"
 // INTERFACE
 
 /* COLUMNDAS DE LA TABLA AJUSTAR*/
@@ -35,6 +28,38 @@ export const Columns: ColumnDef<Karaoke>[] = [
           </span>
         </div>
       )
+    },
+  },
+  {
+    accessorKey: "publication_date",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Publication Date" />
+    ),
+    cell: ({ row }) => {
+    return (
+        <div className="flex items-center">
+          <span>{row.getValue('publication_date')}</span>
+        </div>
+      )
+    },
+    filterFn: (row, id, value) => {
+      return value.includes(row.getValue(id))
+    },
+  },
+  {
+    accessorKey: "isPublished",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Published" />
+    ),
+    cell: ({ row }) => {
+    return (
+        <div className="flex items-center">
+          <span>{row.getValue('isPublished')}</span>
+        </div>
+      )
+    },
+    filterFn: (row, id, value) => {
+      return value.includes(row.getValue(id))
     },
   },
   {

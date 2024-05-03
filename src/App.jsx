@@ -15,7 +15,6 @@ import UserPage from './pages/User/UserPage';
 import ArtistPage from './pages/Artist/ArtistPage';
 import Footer from './components/Footer/Footer';
 import {AuthContext} from './pages/Login/AuthContext.jsx';
-import PublicationPage from './pages/Publication/PublicationPage.jsx';
 import KaraokePage from './pages/Karaoke/KaraokePage.jsx';
 import LyricPage from './pages/Lyric/LyricPage.jsx';
 import { Toaster } from "./components/UI/Toaster"
@@ -44,7 +43,6 @@ function App() {
           <Route path="/album" element={<AlbumPage/>}/>
           <Route path="/lyric" element={<LyricPage/>}/>
           <Route path="/karaoke" element={<KaraokePage/>}/>
-          <Route path="/publication" element={<PublicationPage/>}/>
         </Route>
       </Routes>
       <Footer></Footer>

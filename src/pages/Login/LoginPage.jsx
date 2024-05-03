@@ -5,7 +5,7 @@ import { AuthContext } from './AuthContext.jsx';
 import './Login.css'
 import { Button } from "../../components/UI/Button";
 import { useToast } from "../../components/UI/UseToast";
-import { API_URL } from "../../utils/constantes.js";
+import { API_URL } from "@utils/constants";
 
 function LoginPage() {
     const {

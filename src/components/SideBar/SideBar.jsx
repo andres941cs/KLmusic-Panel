@@ -21,7 +21,7 @@ function SideBar() {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                 </svg>              
             </button>
-            <img src="src/assets/logo.png" className="w-52 rounded" alt="Logo" />
+            <img src="src/assets/logo.png" className="w-52 rounded invert dark:invert-0" alt="Logo" />
             <nav className={`w-full ${open?"md:px-6":"px-1"}`}>
                 <ul role="list" className="flex items-center md:items-stretch flex-col">
                     <li>
@@ -64,12 +64,6 @@ function SideBar() {
                         <Link to="/karaoke" className="flex gap-3 p-1 md:p-2 text-gray-400 font-semibold rounded-md hover:bg-slate-100">
                             <KaraokeIcon className="min-h-5 min-w-5 h-7 w-7"></KaraokeIcon>
                             <span className={`hidden md:block my-auto ${open?"md:block":"md:hidden"}`}>Karaoke</span>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/publication" className="flex gap-3 p-1 md:p-2 text-gray-400 font-semibold rounded-md hover:bg-slate-100">
-                            <PublicationIcon className="min-h-5 min-w-5 h-7 w-7"></PublicationIcon>
-                            <span className={`hidden md:block my-auto ${open?"md:block":"md:hidden"}`}>Publication</span>
                         </Link>
                     </li>
                     <li>

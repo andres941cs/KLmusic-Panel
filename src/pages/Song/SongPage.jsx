@@ -2,7 +2,7 @@ import { useState,useEffect } from 'react';
 import { SongDialog } from './components/SongDialog';
 import { DataTable } from '../../components/UI/DataTable';
 import {Columns} from './components/Columns'
-import { API_URL } from '../../utils/constantes';
+import { API_URL } from '@utils/constants';
 function SongPage() {
 
     const [data, setData] = useState([]);

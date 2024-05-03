@@ -34,6 +34,7 @@ export function DataDialog({name,schema,data}) {
     formData.append('release_date', element.release_date);
     formData.append('genre', element.genre);
     formData.append('id_artist', element.id_artist);
+    // formData.append('image', element.image);
     if(!data)formData.append('image', element.image[0]);
     const PARAMS = {
       method: data ? 'PUT' : 'POST',
@@ -49,6 +50,11 @@ export function DataDialog({name,schema,data}) {
       })
       .then(element => {
           console.log(element);
+          toast({
+            variant: "success",
+            title: "SUCCESS",
+            description: `The ${name} was ${data?'edited':'inserted'} successfully`,
+          })
           setOpen(false);
       })
       .catch(error => {
@@ -92,7 +98,7 @@ export function DataDialog({name,schema,data}) {
             </Label>
             <Input id="image" {...register("image")}  type="file" accept="image/*"  className="file:text-muted-foreground col-span-3" />
           </div>
-          }
+        }
         
         <DialogFooter>
           <Button className=" bg-gray-600 rounded-md hover:bg-gray-600/90" type="submit">Save</Button>

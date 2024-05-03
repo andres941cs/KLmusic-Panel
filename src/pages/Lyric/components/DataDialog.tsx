@@ -10,9 +10,11 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "../../../components/UI/Dialog"
-import { Input } from "../../../components/UI/Input"
+
 import { useForm } from "react-hook-form"
 import React from "react"
+import { Input } from "@components/UI/Input"
+
 
 
 export function DataDialog({name,schema,data}) {

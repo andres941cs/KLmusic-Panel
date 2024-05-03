@@ -5,6 +5,7 @@ export const ArtistSchema = z.object({
   name: z.string(),
   country: z.string(),
   verified: z.number(),
+  image: z.string().nullable(),
 })
 
 export type Artist = z.infer<typeof ArtistSchema>
