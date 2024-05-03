@@ -31,6 +31,18 @@ section{
     animation: animate 6s linear infinite;
     animation-delay: -1.5s;
 }
+@media (prefers-color-scheme: dark) {
+    .box::after{
+        content: '';
+        position: absolute;
+        inset: 2px;
+        border: 20px solid #222;
+        background-color: #fff;
+    }
+  }
+  .box.dark::after{
+    background-color: #fff;
+  }
 .box::after{
     content: '';
     position: absolute;

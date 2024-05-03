@@ -1,4 +1,4 @@
-import { Label } from "../../components/UI/Label"
+
 import { Button } from "../../components/UI/Button"
 import {
   Dialog,
@@ -14,6 +14,7 @@ import { useForm } from "react-hook-form"
 import React, { useState } from "react"
 import { PlusCircledIcon } from "@radix-ui/react-icons"
 import { API_URL } from "../../utils/constantes"
+import { Label } from "../../components/UI/Label"
 
 
 export function UserDialog(user) {

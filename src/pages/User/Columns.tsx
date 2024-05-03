@@ -3,10 +3,11 @@
 import { ColumnDef } from "@tanstack/react-table"
 import { Badge } from "../../components/UI/Badge"
 import { Checkbox } from "../../components/UI/Checkbox"
-import { User } from "./schema"
+
 import { DataTableColumnHeader } from "../Artist/components/DataTableColumnHeader"
 import { DataTableRowActions } from "./DataTableRowActions"
 import React from "react"
+import { User } from "../../schemas/UserSchema"
 
 export const columns: ColumnDef<User>[] = [
   {

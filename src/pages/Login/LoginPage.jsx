@@ -11,8 +11,8 @@ function LoginPage() {
     const {
         register,
         handleSubmit,
-        watch,
-        formState: { errors },
+        // watch,
+        // formState: { errors },
       } = useForm()
     const navigate = useNavigate();
     const { login } = useContext(AuthContext);
@@ -55,7 +55,7 @@ function LoginPage() {
     
     // console.log(watch("email"))
     return ( 
-        <section>
+        <section className="bg-[#ebebeb] dark:bg-[#222]">
             <div className="box">
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <h2>Login</h2>

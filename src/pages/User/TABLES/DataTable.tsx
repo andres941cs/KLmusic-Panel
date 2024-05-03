@@ -1,6 +1,6 @@
 "use client"
-import { Button } from "../../components/UI/Button"
-import { Input } from "../../components/UI/Input"
+import { Button } from "../../../components/UI/Button"
+import { Input } from "../../../components/UI/Input"
 import {
   ColumnDef,
   SortingState,
@@ -20,7 +20,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "../../components/UI/Table"
+} from "../../../components/UI/Table"
 import React from "react"
 
 interface DataTableProps<TData, TValue> {

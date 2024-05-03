@@ -1,7 +1,13 @@
 /* IMPORTACIONES */
-import { createContext, useState } from 'react';
+import React, { createContext, useState } from 'react';
 /* CONSTANTES */
 export const AuthContext = createContext();
+/* INTERFACES */
+// interface IAuthProvider {
+//   children:React.ReactNode;
+// }
+// AuthProvider.propTypes = {children: React.ReactNode,};
+AuthProvider.propTypes = {children:React.JSX};
 /* COMPONENTE */
 // const AuthProvider = ( {children} ) => {
 function AuthProvider ( {children} ) {
