@@ -1,9 +1,6 @@
-"use client"
-
 import { DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu"
 import { MixerHorizontalIcon } from "@radix-ui/react-icons"
 import { Table } from "@tanstack/react-table"
-
 import { Button } from "./Button"
 import {
   DropdownMenu,
@@ -12,8 +9,6 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
 } from "./DropdownMenu"
-import React from "react"
-
 interface DataTableViewOptionsProps<TData> {
   table: Table<TData>
 }

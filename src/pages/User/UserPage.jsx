@@ -1,5 +1,6 @@
 
-import { DataTable } from "../Artist/components/DataTable";
+// import { DataTable } from "../Artist/components/DataTable";
+import { DataTable } from "@components/UI/DataTable";
 import { columns } from "./Columns";
 import { UserDialog } from "./UserDialog";
 import { getUsers } from "./data";

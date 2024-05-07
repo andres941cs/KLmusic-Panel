@@ -7,10 +7,9 @@ import {
   ChevronRightIcon,
   DotFilledIcon,
 } from "@radix-ui/react-icons"
+import { cn } from "@utils/funtions"
 
-function cn(...classes) {
-    return classes.join(" ");
-}
+
 const DropdownMenu = DropdownMenuPrimitive.Root
 
 const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger

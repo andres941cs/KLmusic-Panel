@@ -36,7 +36,6 @@ export function DataDialog({name,schema,data}:IDialogKaraoke) {
     formState: { errors },
   } = useForm()
   const campos = Object.keys(schema.shape);
-  console.log(schema)
   
   const filteredCampos = campos.filter((campo) => campo !== 'id');
 

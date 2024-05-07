@@ -56,23 +56,23 @@ function LoginPage() {
     // console.log(watch("email"))
     return ( 
         <section className="bg-[#ebebeb] dark:bg-[#222]">
-            <div className="box">
+            <div className="box after:bg-white after:border-none  after:dark:bg-[#303030]">
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <h2>Login</h2>
+                    <h2 className="text-foreground text-xl font-semibold">Login</h2>
                     <div className="inputBox">
-                        <span></span>
+                        <span className="after:bg-[#ebebeb] after:dark:bg-[#303030]"></span>
                         <input {...register("email")} type="email" placeholder='Email'/>
                     </div>
                     <div className="inputBox">
-                        <span></span>
+                        <span className="after:bg-[#ebebeb] after:dark:bg-[#303030]"></span>
                         <input  {...register("password")} type="password" placeholder='Password'/>
                     </div>
                     <div className="inputBox">
                         {/* <input type='submit' value={"Sign In"}/> */}
-                        <Button className="w-full rounded">Sign In</Button>
+                        <Button className="w-full rounded font-semibold">Sign In</Button>
                     </div>
                     <div className="group">
-                        <a href="#">Forget Password</a>
+                        <a className="font-semibold hover:text-primary" href="#">Forget Password</a>
                         <a href="#">Sign Up</a>
                     </div>
                 </form>

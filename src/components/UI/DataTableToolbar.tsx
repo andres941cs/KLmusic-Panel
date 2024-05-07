@@ -5,11 +5,11 @@ import { Table } from "@tanstack/react-table"
 import { Button } from "./Button"
 import { Input } from "./Input"
 import { DataTableViewOptions } from "./DataTableViewOptions"
-import React from "react"
+import { ReactNode } from "react"
 
 interface DataTableToolbarProps<TData> {
   table: Table<TData>,
-  children?
+  children?: ReactNode
 }
 
 export function DataTableToolbar<TData>({

@@ -1,14 +1,7 @@
-import { Link } from "react-router-dom";
-import ArtistIcon from "../../assets/icons/ArtistIcon";
-import HomeIcon from "../../assets/icons/HomeIcon";
-import UsersIcon from "../../assets/icons/UsersIcon";
 import { useContext, useState } from "react";
-import MusicIcon from "../../assets/icons/MusicIcon";
-import LyricIcon from "../../assets/icons/LyricIcon";
-import PublicationIcon from "../../assets/icons/PublicationIcon";
-import AlbumIcon from "../../assets/icons/AlbumIcon";
-import LogoutIcon from "../../assets/icons/LogoutIcon";
-import KaraokeIcon from "../../assets/icons/KaraokeIcon";
+import { Link } from "react-router-dom";
+import { HomeIcon,AlbumIcon,ArtistIcon,LogoutIcon } from "@assets/icons";
+import { UsersIcon,MusicIcon,LyricIcon, KaraokeIcon } from "@assets/icons";
 import { AuthContext } from "../../pages/Login/AuthContext";
 
 function SideBar() {

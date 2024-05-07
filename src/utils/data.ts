@@ -1,7 +1,13 @@
+import { Song } from "@schemas/SongSchema";
 import { API_URL } from "./constants";
+import { Album } from "@schemas/AlbumSchema";
+import { Artist } from "@schemas/ArtistSchema";
+import { Karaoke } from "@schemas/KaraokeSchema";
+import { Lyric } from "@schemas/LyricSchema";
+import { User } from "@schemas/UserSchema";
 
 /* PETICIONES AL API */
-export async function getData(table) {
+export async function getData(table:string) {
     const URL = `${API_URL}${table}`;
     try {
         const response = await fetch(URL);
@@ -15,8 +21,9 @@ export async function getData(table) {
         console.error("Error during fetch operation:", error);
     }
 }
-
-export async function addData(table,data) {
+// interface Data {id: string;}
+// addData<T extends Data>
+export async function addData(table:string, data: Song | Album | Artist| Karaoke | Lyric | User) {
     const URL = `${API_URL}${table}/${data.id}`;
     const PARAMS = {
         method: 'POST',
@@ -40,7 +47,7 @@ export async function addData(table,data) {
     }
 }
 
-export async function editData(table,data) {
+export async function editData(table:string,data: Song | Album | Artist| Karaoke | Lyric | User) {
     const URL = `${API_URL}${table}/${data.id}`;
     const PARAMS = {
         method: 'PUT',
@@ -63,8 +70,8 @@ export async function editData(table,data) {
     }
 }
 
-export async function deleteData(table,data) {
-    const URL = `${API_URL}${table}/${data.id}`;
+export async function deleteData(table:string,id:number) {
+    const URL = `${API_URL}${table}/${id}`;
     const PARAMS = {
         method: 'DELETE',
         headers: {

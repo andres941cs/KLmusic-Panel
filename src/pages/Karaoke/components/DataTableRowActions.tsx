@@ -1,28 +1,21 @@
 "use client"
-
 import { DotsHorizontalIcon } from "@radix-ui/react-icons"
 import { Row } from "@tanstack/react-table"
 
-import { Button } from "../../../components/UI/Button"
+import { Button } from "@components/UI/Button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem,
-  DropdownMenuSeparator,
   DropdownMenuShortcut,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "../../../components/UI/DropdownMenu"
+} from "@components/UI/DropdownMenu"
 
+import { MouseEventHandler } from "react"
 
-import React from "react"
-import { KaraokeSchema } from "../../../schemas/KaraokeSchema"
-import { deleteData } from "../../../utils/data"
+import { deleteData } from "@utils/data"
 import { DataDialog } from "./DataDialog"
+import { KaraokeSchema } from "@schemas/KaraokeSchema"
 
 
 interface DataTableRowActionsProps<TData> {
@@ -36,12 +29,12 @@ export function DataTableRowActions<TData>({
   const karaoke = KaraokeSchema.parse(row.original)
 
   // FUNCIONES DE LAS ACCIONES
-  const handleDelete: React.MouseEventHandler<HTMLDivElement> = async (event) => {
+  const handleDelete: MouseEventHandler<HTMLDivElement> = async () => {
     // BORRAMOS USANDO EL API
-    await deleteData('karaoke',karaoke)
+    await deleteData('karaoke',karaoke.id)
   };
 
-  const [open, setOpen] = React.useState(false);
+  // const [open, setOpen] = useState(false);
 
   return (
     <DropdownMenu>
@@ -55,7 +48,7 @@ export function DataTableRowActions<TData>({
       <DropdownMenuContent align="end" className="w-[160px]">
         {/* <DropdownMenuItem>
           Edit */}
-        <DataDialog name={'karaoke'} data={karaoke} schema={KaraokeSchema} />
+        <DataDialog name={'karaoke'} data={karaoke} schema={KaraokeSchema.shape} />
         {/* </DropdownMenuItem> */}
 
         <DropdownMenuItem onClick={handleDelete}>

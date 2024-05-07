@@ -2,10 +2,7 @@
 
 import * as React from "react"
 import * as SwitchPrimitives from "@radix-ui/react-switch"
-
-function cn(...classes) {
-    return classes.join(" ");
-  }
+import { cn } from "@utils/funtions"
 
 const Switch = React.forwardRef<
   React.ElementRef<typeof SwitchPrimitives.Root>,
