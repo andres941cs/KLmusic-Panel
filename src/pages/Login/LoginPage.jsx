@@ -1,11 +1,12 @@
 import { useForm } from "react-hook-form"
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from './AuthContext.jsx';
+
 import './Login.css'
-import { Button } from "../../components/UI/Button";
-import { useToast } from "../../components/UI/UseToast";
+import { Button } from "../../components/UI/Button.tsx";
+import { useToast } from "../../components/UI/UseToast.tsx";
 import { API_URL } from "@utils/constants";
+import { AuthContext } from "./AuthContext.jsx";
 
 function LoginPage() {
     const {

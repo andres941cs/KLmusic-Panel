@@ -14,7 +14,7 @@ function SideBar() {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                 </svg>              
             </button>
-            <img src="src/assets/logo.png" className="w-52 rounded invert dark:invert-0" alt="Logo" />
+            <img src="/logo.png" className="w-52 rounded invert dark:invert-0" alt="Logo" />
             <nav className={`w-full ${open?"md:px-6":"px-1"}`}>
                 <ul role="list" className="flex items-center md:items-stretch flex-col">
                     <li>

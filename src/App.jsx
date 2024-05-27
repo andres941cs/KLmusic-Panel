@@ -1,5 +1,4 @@
 
-// import './assets/'
 import { useContext } from 'react';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -24,32 +23,26 @@ function App() {
   const { isAuthenticated } = useContext(AuthContext);
   return (
     <>
-      {/* <AuthProvider> */}
       <BrowserRouter>
-      {isAuthenticated&&<SideBar></SideBar>}
-      
-      <main className='bg-background text-foreground border'>
-      <Header></Header>
-      <Routes>
-        <Route path="/login" element={<LoginPage />} />
-        <Route element={<ProtectedRoute />}>
-          
-          {/* <Route path="/user" element={<ProtectedRoute path="/user" element={<UserPage/>}/>}/> */}
-          {/* <ProtectedRoute path="/" element={<UserPage/>}/> */}
-          <Route index element={<HomePage />} />
-          <Route path="/user" element={<UserPage />} />
-          <Route path="/song" element={<SongPage />} />
-          <Route path="/artist" element={<ArtistPage />} />
-          <Route path="/album" element={<AlbumPage/>}/>
-          <Route path="/lyric" element={<LyricPage/>}/>
-          <Route path="/karaoke" element={<KaraokePage/>}/>
-        </Route>
-      </Routes>
-      <Footer></Footer>
-      </main>
-    </BrowserRouter>
-    <Toaster />
-    {/* </AuthProvider> */}
+        {isAuthenticated&&<SideBar></SideBar>}
+        <main className='bg-background text-foreground border'>
+        <Header></Header>
+        <Routes>
+          <Route path="/login" element={<LoginPage />} />
+          <Route element={<ProtectedRoute />}>
+            <Route index element={<HomePage />} />
+            <Route path="/user" element={<UserPage />} />
+            <Route path="/song" element={<SongPage />} />
+            <Route path="/artist" element={<ArtistPage />} />
+            <Route path="/album" element={<AlbumPage/>}/>
+            <Route path="/lyric" element={<LyricPage/>}/>
+            <Route path="/karaoke" element={<KaraokePage/>}/>
+          </Route>
+        </Routes>
+        <Footer></Footer>
+        </main>
+      </BrowserRouter>
+      <Toaster />
     </>
   )
 }

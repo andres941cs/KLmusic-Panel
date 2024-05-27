@@ -11,10 +11,11 @@ AuthProvider.propTypes = {children:React.JSX};
 /* COMPONENTE */
 // const AuthProvider = ( {children} ) => {
 function AuthProvider ( {children} ) {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(localStorage.getItem('token') ? true : false);
 
-  const login = () => {
+  const login = (data) => {
     setIsAuthenticated(true);
+    localStorage.setItem('token', data.token);
   };
 
   const logout = () => {

@@ -28,7 +28,7 @@ import React, { createContext, useContext, useState, ReactNode } from 'react';
 // Definición de tipos
 type AuthContextType = {
   isAuthenticated: boolean;
-  login: () => void;
+  login: (token:string) => void;
   logout: () => void;
 };
 
@@ -36,11 +36,12 @@ export const AuthContext = createContext<AuthContextType | undefined>(undefined)
 
 // Proveedor de autenticación
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
-
-  const login = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(localStorage.getItem('token') ? true : false);
+  console.log(isAuthenticated);
+  const login = (token:string) => {
     // Lógica de autenticación (puedes personalizarla según tus necesidades)
     setIsAuthenticated(true);
+    localStorage.setItem('token', token);
   };
 
   const logout = () => {
@@ -56,10 +57,10 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 };
 
 // Hook personalizado para acceder al contexto de autenticación
-export const useAuth = () => {
-  const context = useContext(AuthContext);
-  if (!context) {
-    throw new Error('useAuth debe ser utilizado dentro de un AuthProvider');
-  }
-  return context;
-};
+// export const useAuth = () => {
+//   const context = useContext(AuthContext);
+//   if (!context) {
+//     throw new Error('useAuth debe ser utilizado dentro de un AuthProvider');
+//   }
+//   return context;
+// };
