@@ -13,6 +13,7 @@ import {
 import { Input } from "../../../components/UI/Input"
 import { useForm } from "react-hook-form"
 import React from "react"
+import { API_URL } from "@utils/constants"
 
 
 export function SongDialog({data}) {
@@ -32,7 +33,7 @@ export function SongDialog({data}) {
     formData.append('id_artist', song.id_artist);
     if(!data)formData.append('image', song.image[0]);
 
-    const URL = `http://127.0.0.1:8000/api/song${data ? `/${data.id}` : ''}`;
+    const URL = `${API_URL}song${data ? `/${data.id}` : ''}`;
       const PARAMS = {
         method: data ? 'PUT' : 'POST',
         headers: data && { 'Content-Type': 'application/x-www-form-urlencoded' },

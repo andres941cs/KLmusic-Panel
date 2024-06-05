@@ -36,11 +36,12 @@ import {
   TableHeader,
   TableRow,
 } from "../../../components/UI/Table"
+import { API_URL } from "@utils/constants"
 
 
 // PETICION A LA API PARA OBTENER LOS DATOS
 async function getSongs():Promise<Song[]> {
-  const URL ="http://127.0.0.1:8000/api/songs";
+  const URL =API_URL + "songs";
   //const response =  fetch(URL)
   try {
     const response = await fetch(URL);

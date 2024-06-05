@@ -14,6 +14,7 @@ import { Input } from "../../../components/UI/Input"
 import { useForm } from "react-hook-form"
 import React from "react"
 import { useToast } from "../../../components/UI/UseToast"
+import { API_URL } from "@utils/constants"
 
 
 export function DataDialog({name,schema,data}) {
@@ -28,7 +29,7 @@ export function DataDialog({name,schema,data}) {
   const { toast } = useToast();
   const onSubmit = (element) => {
     console.log(element);
-    const URL = `http://127.0.0.1:8000/api/${name}${data ? `/${data.id}` : ''}`;
+    const URL = `${API_URL}${name}${data ? `/${data.id}` : ''}`;
     const formData = new FormData();
     formData.append('name', element.name);
     formData.append('release_date', element.release_date);

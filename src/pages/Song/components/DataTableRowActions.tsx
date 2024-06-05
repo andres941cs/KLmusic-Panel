@@ -19,6 +19,7 @@ import {
 import React from "react"
 import { SongSchema } from "../../../schemas/SongSchema"
 import { SongDialog } from "./SongDialog"
+import { API_URL } from "@utils/constants"
 
 interface DataTableRowActionsProps<TData> {
   row: Row<TData>
@@ -35,7 +36,7 @@ export function DataTableRowActions<TData>({
     // BORRAMOS LA CANCION
     // await deleteSong(song)
      async function deleteSong(song) {
-      const URL = `http://127.0.0.1:8000/api/song/${song.id}`;
+      const URL = `${API_URL}song/${song.id}`;
       const PARAMS = {
           method: 'DELETE',
           headers: {
