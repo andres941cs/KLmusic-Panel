@@ -14,10 +14,16 @@ import {
 import { useForm } from "react-hook-form"
 import React from "react"
 import { Input } from "@components/UI/Input"
+import { API_URL } from "@utils/constants"
+import { z } from "zod"
+import { Lyric } from "@schemas/LyricSchema"
 
-
-
-export function DataDialog({name,schema,data}) {
+interface IDataDialog {
+  name: string;
+  schema: z.ZodRawShape;
+  data: Lyric;
+}
+export function DataDialog({name,schema,data}:IDataDialog) {
   const {
     register,
     handleSubmit,
@@ -28,7 +34,7 @@ export function DataDialog({name,schema,data}) {
   const filteredCampos = campos.filter((campo) => campo !== 'id');
 
   const onSubmit = (element) => {
-    const URL = `http://127.0.0.1:8000/api/${name}${data ? `/${data.id}` : ''}`;
+    const URL = `${API_URL}${name}${data ? `/${data.id}` : ''}`;
     console.log(element)
       const PARAMS = {
         method: data ? 'PUT' : 'POST',

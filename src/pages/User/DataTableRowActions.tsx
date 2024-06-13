@@ -1,5 +1,3 @@
-"use client"
-
 import { DotsHorizontalIcon } from "@radix-ui/react-icons"
 import { Row } from "@tanstack/react-table"
 
@@ -8,22 +6,14 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem,
-  DropdownMenuSeparator,
   DropdownMenuShortcut,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "../../components/UI/DropdownMenu"
 
-
-import React from "react"
 import { UserSchema } from "../../schemas/UserSchema"
 import { deleteUser } from "./data"
 import { EditDialog } from "./EditDialog"
-import { DialogItem } from "./DialogItem"
+import { MouseEventHandler } from "react"
 
 interface DataTableRowActionsProps<TData> {
   row: Row<TData>
@@ -36,12 +26,10 @@ export function DataTableRowActions<TData>({
   const user = UserSchema.parse(row.original)
 
   // FUNCIONES DE LAS ACCIONES
-  const handleDelete: React.MouseEventHandler<HTMLDivElement> = async (event) => {
+  const handleDelete: MouseEventHandler<HTMLDivElement> = async () => {
     // BORRAMOS EL USUARIO
     await deleteUser(user)
   };
-
-  const [open, setOpen] = React.useState(false);
 
   return (
     <DropdownMenu>
@@ -53,26 +41,8 @@ export function DataTableRowActions<TData>({
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-[160px]">
-        {/* <DropdownMenuItem>
-          Edit */}
         <EditDialog user={user} />
-        {/* </DropdownMenuItem> */}
         
-
-        {/* <DropdownMenuSeparator />
-        <DropdownMenuSub>
-          <DropdownMenuSubTrigger>Labels</DropdownMenuSubTrigger>
-          <DropdownMenuSubContent>
-            <DropdownMenuRadioGroup value={task.label}>
-              {labels.map((label) => (
-                <DropdownMenuRadioItem key={label.value} value={label.value}>
-                  {label.label}
-                </DropdownMenuRadioItem>
-              ))}
-            </DropdownMenuRadioGroup>
-          </DropdownMenuSubContent>
-        </DropdownMenuSub>
-        <DropdownMenuSeparator /> */}
         <DropdownMenuItem onClick={handleDelete}>
           Delete
           <DropdownMenuShortcut>⌘⌫</DropdownMenuShortcut>

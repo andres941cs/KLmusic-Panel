@@ -1,5 +1,4 @@
-import { Label } from "../../../components/UI/Label"
-import { Button } from "../../../components/UI/Button"
+
 import {
   Dialog,
   DialogContent,
@@ -9,14 +8,16 @@ import {
   DialogMenuItem,
   DialogTitle,
   DialogTrigger,
-} from "../../../components/UI/Dialog"
-import { Input } from "../../../components/UI/Input"
+} from "@components/UI/Dialog"
 import { useForm } from "react-hook-form"
-import React from "react"
 import { API_URL } from "@utils/constants"
+import { Input } from "@components/UI/Input"
+import { Song } from "@schemas/SongSchema"
+import { useState } from "react"
+import { Label } from "@components/UI/Label"
+import { Button } from "@components/UI/Button"
 
-
-export function SongDialog({data}) {
+export function SongDialog({data}:{data:Song}) {
   const {
     register,
     handleSubmit,
@@ -28,9 +29,9 @@ export function SongDialog({data}) {
     // PERSONALIZAR EL ENVIO
     const formData = new FormData();
     formData.append('name', song.name);
-    formData.append('duration', song.duration);
+    formData.append('duration', song.duration.toString());
     formData.append('genre', song.genre);
-    formData.append('id_artist', song.id_artist);
+    formData.append('id_artist', song.id_artist.toString());
     if(!data)formData.append('image', song.image[0]);
 
     const URL = `${API_URL}song${data ? `/${data.id}` : ''}`;
@@ -54,7 +55,7 @@ export function SongDialog({data}) {
             console.error("Error during fetch operation:", error);
         });
   }
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>

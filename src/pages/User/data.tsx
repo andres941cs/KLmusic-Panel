@@ -31,20 +31,16 @@ export async function editUser(user) {
         //body: JSON.stringify(data),
     };
     try {
-        const response = await fetch(URL);
+        const response = await fetch(URL,PARAMS);
     
         if (!response.ok) {
         throw new Error("Network response was not ok");
         }
     
         const data = await response.json();
-        //const usersData: Artist[] = data;
-        //return usersData;
         return data;
-        //return z.array(ArtistSchema).parse(data)
     } catch (error) {
         console.error("Error during fetch operation:", error);
-        //throw error; // Puedes manejar el error según tus necesidades
     }
 }
 

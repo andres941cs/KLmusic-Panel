@@ -5,36 +5,32 @@ import {
   EyeNoneIcon,
 } from "@radix-ui/react-icons"
 import { Column } from "@tanstack/react-table"
-
-import { Button } from "../../../components/UI/Button"
+import { Button } from "@components/UI/Button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "../../../components/UI/DropdownMenu"
-import React from "react"
+} from "@components/UI/DropdownMenu"
 
 interface DataTableColumnHeaderProps<TData, TValue>
   extends React.HTMLAttributes<HTMLDivElement> {
   column: Column<TData, TValue>
   title: string
 }
-function cn(...classes) {
-  return classes.join(" ");
-}
+
 export function DataTableColumnHeader<TData, TValue>({
   column,
   title,
   className,
 }: DataTableColumnHeaderProps<TData, TValue>) {
   if (!column.getCanSort()) {
-    return <div className={cn(className)}>{title}</div>
+    return <div className={className}>{title}</div>
   }
 
   return (
-    <div className={cn("flex items-center space-x-2", className)}>
+    <div className={`flex items-center space-x-2" ${className||""}`}>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button

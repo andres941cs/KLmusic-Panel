@@ -1,5 +1,5 @@
-import { Label } from "../../components/UI/Label"
-import { Button } from "../../components/UI/Button"
+import { Label } from "@components/UI/Label"
+import { Button } from "@components/UI/Button"
 import {
   Dialog,
   DialogContent,
@@ -8,21 +8,18 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../../components/UI/Dialog"
-import { Input } from "../../components/UI/Input"
+} from "@components/UI/Dialog"
+import { Input } from "@components/UI/Input"
 import { useForm } from "react-hook-form"
-import { API_URL } from "../../utils/constants"
+import { API_URL } from "@utils/constants"
 import { useState } from "react"
 import { User } from "@schemas/UserSchema"
 
-interface IEditDialog {
-  user: User
-}
+interface IEditDialog { user: User }
 export function EditDialog({user}:IEditDialog) {
   const {
     register,
     handleSubmit,
-    // setValue ,
     formState: { errors },
   } = useForm()
 

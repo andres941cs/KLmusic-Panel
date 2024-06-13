@@ -3,8 +3,8 @@ import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import './Login.css'
-import { Button } from "../../components/UI/Button.tsx";
-import { useToast } from "../../components/UI/UseToast.tsx";
+import { Button } from "@components/UI/Button.tsx";
+import { useToast } from "@components/UI/UseToast.tsx";
 import { API_URL } from "@utils/constants";
 import { AuthContext } from "./AuthContext.jsx";
 
@@ -31,11 +31,7 @@ function LoginPage() {
       
             if (response.ok) {
               const data = await response.json();
-              // STORE AUTHENTICAION DATA (TOKEN, USERT OBJECT) In Context or Local Storage
               login(data); 
-            //   } else {
-            //     localStorage.setItem('authToken', data.token); // Example using local storage
-            //   }
               // REDIRECT TO => PROTECTED ROUTE
               navigate('/');
             } else {
@@ -47,7 +43,6 @@ function LoginPage() {
                 title: "ERROR",
                 description: message,
               })
-            //   console.error('Login failed:', );
             }
         } catch (error) {
             console.error('Login error:', error);

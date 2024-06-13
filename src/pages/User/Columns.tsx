@@ -1,13 +1,8 @@
-"use client"
-
 import { ColumnDef } from "@tanstack/react-table"
-import { Badge } from "../../components/UI/Badge"
-import { Checkbox } from "../../components/UI/Checkbox"
-
 import { DataTableColumnHeader } from "../Artist/components/DataTableColumnHeader"
 import { DataTableRowActions } from "./DataTableRowActions"
-import React from "react"
-import { User } from "../../schemas/UserSchema"
+import { User } from "@schemas/UserSchema"
+
 
 export const columns: ColumnDef<User>[] = [
   {
@@ -27,7 +22,6 @@ export const columns: ColumnDef<User>[] = [
     cell: ({ row }) => {
       return (
         <div className="flex space-x-2">
-          {/* {label && <Badge variant="outline">{label.label}</Badge>} */}
           <span className="max-w-[500px] truncate font-medium">
             {row.getValue("username")}
           </span>

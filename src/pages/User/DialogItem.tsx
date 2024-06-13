@@ -1,36 +1,12 @@
-import React from "react";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
   DialogPortal,
   DialogOverlay,
   DialogTrigger,
-} from "../../components/UI/Dialog"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
-  DropdownMenuTrigger,
-} from "../../components/UI/DropdownMenu"
-import { Label } from "../../components/UI/Label"
-import { Button } from "../../components/UI/Button"
+} from "@components/UI/Dialog"
+import { DropdownMenuItem } from "@components/UI/DropdownMenu"
 
-interface Props
-{
-  triggerChildren:string
-
-}
 export function DialogItem(props, forwardedRef) {
   const { triggerChildren, children, onOpenChange, ...itemProps } = props;
   return (
@@ -52,4 +28,4 @@ export function DialogItem(props, forwardedRef) {
       </DialogPortal>
     </Dialog>
   );
-};
+}

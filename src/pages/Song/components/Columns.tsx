@@ -1,14 +1,7 @@
 import { ColumnDef } from "@tanstack/react-table"
-import { Button } from "../../../components/UI/Button"
-import { Badge } from "../../../components/UI/Badge"
-import { Checkbox } from "../../../components/UI/Checkbox"
- import { Song } from "./schema"
 import { DataTableColumnHeader } from "../../Artist/components/DataTableColumnHeader"
 import { DataTableRowActions } from "./DataTableRowActions"
-import React from "react"
-import { CaretSortIcon, DotsHorizontalIcon } from "@radix-ui/react-icons"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu"
-// INTERFACE
+import { Song } from "@schemas/SongSchema"
 
 /* COLUMNDAS DE LA TABLA AJUSTAR*/
 export const Columns: ColumnDef<Song>[] = [

@@ -1,10 +1,11 @@
 
 import { useState,useEffect } from 'react';
 import { DataDialog } from './components/DataDialog';
-import { DataTable } from '../../components/UI/DataTable';
+import { DataTable } from '@components/UI/DataTable';
 import {Columns} from './components/Columns'
-import { LyricSchema } from '../../schemas/LyricSchema'; 
-import { getData } from '../../utils/data';
+import { LyricSchema } from '@schemas/LyricSchema'; 
+import { getData } from '@utils/data';
+
 function LyricPage() {
     const [data, setData] = useState([]);
     useEffect(() => {
